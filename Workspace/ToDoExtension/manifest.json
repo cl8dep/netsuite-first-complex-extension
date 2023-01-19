@@ -1,0 +1,79 @@
+{
+    "name": "ToDoExtension",
+    "fantasyName": "To Do Extension",
+    "vendor": "Acme",
+    "version": "1.0.0",
+    "type": "extension",
+    "target": "SCA,SCS",
+    "target_version": {
+        "SCA": ">=22.1.1",
+        "SCS": ">=22.1.1"
+    },
+    "description": "My cool extension does magic!",
+    "skins": [],
+    "assets": {
+        "img": {
+            "files": []
+        },
+        "fonts": {
+            "files": []
+        },
+        "services": {
+            "files": [
+                "services/ToDoModule.Service.ss"
+            ]
+        }
+    },
+    "configuration": {
+        "files": [
+            "Modules/ToDoModule/Configuration/ToDoModule.json"
+        ]
+    },
+    "sass": {
+        "entry_points": {
+            "shopping": "Modules/ToDoModule/Sass/_todoextension-todomodule.scss"
+        },
+        "files": [
+            "Modules/ToDoModule/Sass/_todoextension-todomodule.scss"
+        ]
+    },
+    "templates": {
+        "application": {
+            "shopping": {
+                "files": [
+                    "Modules/ToDoModule/Templates/acme_todoextension_todomodule_list.tpl",
+                    "Modules/ToDoModule/Templates/acme_todoextension_todomodule_list_item.tpl",
+                    "Modules/ToDoModule/Templates/acme_todoextension_todomodule_edit.tpl"
+                ]
+            }
+        }
+    },
+    "javascript": {
+        "entry_points": {
+            "shopping": "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.js"
+        },
+        "application": {
+            "shopping": {
+                "files": [
+                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.js",
+                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.Model.js",
+                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.SS2Model.js",
+                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.Collection.js",
+                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.Router.js",
+                    "Modules/ToDoModule/JavaScript/ToDoModule.List.View.js",
+                    "Modules/ToDoModule/JavaScript/ToDoModule.List.View.Item.js",
+                    "Modules/ToDoModule/JavaScript/ToDoModule.Edit.View.js"
+                ]
+            }
+        }
+    },
+    "ssp-libraries": {
+        "entry_point": "Modules/ToDoModule/SuiteScript/Acme.ToDoExtension.ToDoModule.js",
+        "files": [
+            "Modules/ToDoModule/SuiteScript/Acme.ToDoExtension.ToDoModule.js",
+            "Modules/ToDoModule/SuiteScript/ToDoModule.ServiceController.js",
+            "Modules/ToDoModule/SuiteScript/ToDoModule.Model.js"
+        ]
+    },
+    "local_folder": "Workspace/ToDoExtension"
+}

@@ -1,0 +1,21 @@
+{
+  "generator-extension": {
+    "ext_application": {
+      "HomeExtension": [
+        "shopping",
+        "myaccount",
+        "checkout"
+      ],
+      "UserPreferencesExtension": [
+        "shopping",
+        "myaccount",
+        "checkout"
+      ],
+      "ToDoExtension": [
+        "shopping",
+        "myaccount",
+        "checkout"
+      ]
+    }
+  }
+}

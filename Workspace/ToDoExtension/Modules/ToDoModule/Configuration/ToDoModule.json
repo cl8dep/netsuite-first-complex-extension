@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": { 
+        "ToDoModule.config": {
+            "group": "extensions",
+            "subtab": "ToDoModule_subtab",
+            "type": "string",
+            "title": "ToDoModule_Title",
+            "description": "Config description example",
+            "default": "Default config example"
+        }
+    }
+}

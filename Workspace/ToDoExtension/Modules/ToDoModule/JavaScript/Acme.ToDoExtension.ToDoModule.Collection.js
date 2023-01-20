@@ -2,17 +2,29 @@
 // -----------------------
 // @module Case
 define("Acme.ToDoExtension.ToDoModule.Collection", [
-  "Backbone",
+  "SCCollection",
   "Utils",
   "Acme.ToDoExtension.ToDoModule.Model"
-], function (Backbone, Utils, Model) {
+], function (SCCollectionModule, Utils, Model) {
   "use strict";
 
-  // @class Case.Fields.Model @extends Backbone.Model
-  return Backbone.Collection.extend({
-    //@property {String} urlRoot
-    model: Model,
-    
-    url: Utils.getAbsoluteUrl(getExtensionAssetsPath("services/ToDoModule.Service.ss")),
-  });
+  var SCCollection = SCCollectionModule.SCCollection;
+
+  function TodoCollection(models, options) {
+      SCCollection.call(this, models, options);
+
+      this.model = Model;
+      this.url = function () {
+          return Utils.getAbsoluteUrl(getExtensionAssetsPath("services/ToDoModule.Service.ss"))
+      }
+  }
+
+  TodoCollection.prototype = Object.create(SCCollection.prototype);
+  TodoCollection.prototype.constructor = TodoCollection;
+
+  TodoCollection.prototype.parse = function parse(e){
+    return e;
+  }
+
+  return TodoCollection
 });

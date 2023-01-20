@@ -6,6 +6,6 @@
     </div>
   </div>
 
-  <ul data-view="Acme.ToDoExtension.ToDoModule.Collection"
+  <ul data-view="Acme.ToDoExtension.ToDoModule.Collection.View"
     class="cards-container"></ul>
 </div>

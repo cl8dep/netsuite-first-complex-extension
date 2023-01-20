@@ -43,7 +43,9 @@
                 "files": [
                     "Modules/ToDoModule/Templates/acme_todoextension_todomodule_list.tpl",
                     "Modules/ToDoModule/Templates/acme_todoextension_todomodule_list_item.tpl",
-                    "Modules/ToDoModule/Templates/acme_todoextension_todomodule_edit.tpl"
+                    "Modules/ToDoModule/Templates/acme_todoextension_todomodule_edit.tpl",
+                    "Modules/ToDoModule/Templates/acme_todoextension_todomodule_collection_view.tpl",
+                    "Modules/ToDoModule/Templates/acme_todoextension_todomodule_edit_form.tpl"
                 ]
             }
         }
@@ -57,12 +59,13 @@
                 "files": [
                     "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.js",
                     "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.Model.js",
-                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.SS2Model.js",
                     "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.Collection.js",
-                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.Router.js",
+                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.Collection.View.js",
                     "Modules/ToDoModule/JavaScript/ToDoModule.List.View.js",
                     "Modules/ToDoModule/JavaScript/ToDoModule.List.View.Item.js",
-                    "Modules/ToDoModule/JavaScript/ToDoModule.Edit.View.js"
+                    "Modules/ToDoModule/JavaScript/ToDoModule.Edit.View.js",
+                    "Modules/ToDoModule/JavaScript/ToDoModule.Edit.Form.View.js",
+                    "Modules/ToDoModule/JavaScript/Acme.ToDoExtension.ToDoModule.Collection.View.js"
                 ]
             }
         }

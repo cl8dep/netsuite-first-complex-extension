@@ -2,66 +2,80 @@
 define("Acme.ToDoExtension.ToDoModule.Edit.View", [
   "acme_todoextension_todomodule_edit.tpl",
 
-  "Acme.ToDoExtension.ToDoModule.SS2Model",
-
-  "Backbone",
-  "Backbone.FormView",
-  "Backbone.CollectionView",
+  "Acme.ToDoExtension.ToDoModule.Model",
+  "PageType.Base.View",
+  "Acme.ToDoExtension.ToDoModule.Edit.Form.View"
 ], function (
   acme_todoextension_todomodule_edit_tpl,
 
-  ToDoModuleSS2Model,
+  TodoModel,
 
-  Backbone,
-  FormView,
-  TodoListViewItem,
-  CollectionView
+  PageTypeBaseView,
+  ToDoEditFormView
 ) {
   "use strict";
 
-  // @class Acme.ToDoExtension.ToDoModule.View @extends Backbone.View
-  return Backbone.View.extend({
+  return PageTypeBaseView.PageTypeBaseView.extend({
     template: acme_todoextension_todomodule_edit_tpl,
 
-    initialize: function (options) {
-      this.application = options.application;
-      this.model = options.model;
-      FormView.add(this);
+    initialize: function initialize() {
+      this.model = new TodoModel();
     },
 
-    events: {
-      "submit form": "saveForm",
+    getSelectedMenu: function getSelectedMenu() {
+      return "todo";
     },
 
-    bindings: {},
+    beforeShowContent: function beforeShowContent() {
+      this.childViews = {
+        "Acme.ToDoExtension.ToDoModule.Edit.Form.View": function () {
+          return new ToDoEditFormView({
+            model: this.model,
+          });
+        },
+      };
 
-    childViews: {},
+      if (!!Number(this.options.routerArguments[0])) {
+        this.getBreadcrumbPages = function () {
+          return [
+            {
+              text: "To Do",
+              href: "/todo",
+            },
+            {
+              text: "Edit",
+            },
+          ];
+        };
+
+        this.title = "Edit Task";
+
+        return this.model.fetch({
+          data: { id: this.options.routerArguments[0] },
+        });
+      } else {
+        this.getBreadcrumbPages = function () {
+          return [
+            {
+              text: "To Do",
+              href: "/todo",
+            },
+            {
+              text: "Add",
+            },
+          ];
+        };
+
+        this.title = "Add Task";
+
+        return jQuery.Deferred().resolve();
+      }
+    },
 
     getContext: function getContext() {
       return {
-        name: this.model.get("name"),
-        notify: this.model.get("notify"),
-        notes: this.model.get("notes"),
         isNew: this.model.isNew(),
-        done: this.model.get("done")
       };
-    },
-
-    getBreadcrumbPages: function () {
-      if (this.model.isNew())
-      {
-        return [
-          {text: 'To Do', href: '/todo'}
-        , {text: 'New'}
-        ]
-      }
-      else
-      {
-        return [
-          {text: 'To Do', href: '/todo'}
-        , {text: 'Edit'}
-        ]
-      }
     },
   });
 });

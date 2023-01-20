@@ -1,49 +1,47 @@
 // @module Acme.ToDoExtension.ToDoModule
 define("Acme.ToDoExtension.ToDoModule.List.View.Item", [
+  "SCView",
   "acme_todoextension_todomodule_list_item.tpl",
-
-  "Acme.ToDoExtension.ToDoModule.SS2Model",
-
-  "Backbone",
 ], function (
+  SCViewModule,
   acme_todoextension_todomodule_tpl,
-
-  ToDoModuleSS2Model,
-
-  Backbone
 ) {
   "use strict";
 
-  // @class Acme.ToDoExtension.ToDoModule.View @extends Backbone.View
-  return Backbone.View.extend({
-    template: acme_todoextension_todomodule_tpl,
+  var SCView = SCViewModule.SCView;
 
-    initialize: function (options) {
-      this.listenTo(this.model, "change", this.render);
-    },
+  function TodoListViewItem(options) {
+    SCView.call(this, options);
 
-    events: {
-      "click input#done": "markDone",
-    },
+    this.model = options.model;
 
-    bindings: {},
+    this.template = acme_todoextension_todomodule_tpl;
 
-    childViews: {},
-
-    getContext: function () {
-      return {
-        internalid: this.model.get("internalid"),
-        name: this.model.get("name"),
-        description: this.model.get("description"),
-        done: this.model.get("done"),
-      };
-    },
-
-    markDone: function (event) {
+    this.markDone = function (event) {
       event.stopPropagation();
 
       this.model.set({ done: jQuery(event.currentTarget).is(":checked") });
       this.model.save();
-    },
-  });
+    };
+  }
+
+  TodoListViewItem.prototype = Object.create(SCView.prototype);
+  TodoListViewItem.prototype.constructor = TodoListViewItem;
+
+  TodoListViewItem.prototype.getContext = function () {
+    return {
+      internalid: this.model.get("internalid"),
+      name: this.model.get("name"),
+      description: this.model.get("description"),
+      done: this.model.get("done"),
+    };
+  };
+
+  TodoListViewItem.prototype.getEvents = function () {
+    return {
+      "click input#done": "markDone",
+    };
+  };
+
+  return TodoListViewItem;
 });
